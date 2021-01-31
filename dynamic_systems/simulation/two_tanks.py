@@ -1,6 +1,6 @@
 import numpy as np
-from scipy.constants import g
 
+from scipy.constants import g
 from .abstract_sys import AbstractSystem
 
 

@@ -6,7 +6,7 @@ Repository containing the code for the experiments and examples of my Bachelor T
 Implemented plants
 
 * [x] Two Tanks System
-* [ ] Continuously Stirred Ractor Tank (CSTR) [1]
+* [x] Continuously Stirred Ractor Tank (CSTR) [1]
 
 ## Implemented algorithms
 

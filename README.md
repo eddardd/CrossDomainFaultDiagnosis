@@ -26,7 +26,7 @@ Optimal Transport-based transfer
 
 * [x] Sinkhorn Transport [8] - already implemented in the [Python Optimal Transport](https://github.com/PythonOT/POT) library
 * [x] Monge Transport [9] - already implemented in the [Python Optimal Transprot](https://github.com/PythonOT/POT) library
-* [x] Joint Distribution Optimal Transport (JDOT) [10] - implementation inspired on [rflamary Github repository](https://github.com/rflamary/JDOT)
+* [x] Joint Distribution Optimal Transport (JDOT) [10] - implementation adapted from [rflamary Github repository](https://github.com/rflamary/JDOT)
 
 
 References

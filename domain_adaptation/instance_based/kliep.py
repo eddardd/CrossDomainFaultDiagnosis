@@ -49,7 +49,6 @@ def KLIEP(Xs, Xt,
             raise ValueError('Bad kernel')
 
     
-    ns = Xs.shape[0]
     nt = Xt.shape[0]
     
     if support_vectors is None:
@@ -75,4 +74,4 @@ def KLIEP(Xs, Xt,
             break
         costs.append(c)
     weights = np.dot(alpha, phi(Xs, support_vectors, sigma=sigma, kernel=kernel))
-    return weights, alpha, costs, support_vectors
+    return weights

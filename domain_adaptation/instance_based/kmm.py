@@ -3,7 +3,7 @@ from cvxopt import matrix, solvers
 from sklearn.metrics.pairwise import rbf_kernel
 
 
-def KMM(Xs, Xt, kernel='linear', B=1.0, gamma=None, epsilon=None):
+def KMM(Xs, Xt, kernel='linear', B=1.0, gamma=None, epsilon=None, verbose=False):
     """ Implementation of Kernel Mean Matching algorithm [1] using CVXOPT.
 
     Parameters
@@ -26,6 +26,7 @@ def KMM(Xs, Xt, kernel='linear', B=1.0, gamma=None, epsilon=None):
     [1] Gretton, Arthur, et al. "Covariate shift by kernel mean matching." Dataset shift in machine learning 3.4
         (2009): 5.
     """
+    solvers.options['show_progress'] = verbose
     ns = Xs.shape[0]
     nt = Xt.shape[0]
     if epsilon is None:
@@ -48,4 +49,4 @@ def KMM(Xs, Xt, kernel='linear', B=1.0, gamma=None, epsilon=None):
     h = matrix(np.array([ns * (1 + epsilon)] + [ns * (epsilon - 1)] + [1] * ns + [0] * ns))
     
     sol = solvers.qp(P=P, q=-q, G=G, h=h)
-    return np.array(sol['x'])
+    return np.squeeze(np.array(sol['x']))

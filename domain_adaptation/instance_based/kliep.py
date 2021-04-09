@@ -4,11 +4,11 @@ from scipy.spatial.distance import cdist
 
 def KLIEP(Xs, Xt,
           kernel='linear',
-          sigma=1.,
+          kernel_param=None,
           numItermax=1000,
           epsilon=1e-4,
           percentSamples=0.1,
-          support_vectors=None):
+          basis_vectors=None):
     """Implementation of Kullback-Leibler Importance Estimation Procedure (KLIEP) [1] algorithm
 
     Parameters
@@ -40,23 +40,32 @@ def KLIEP(Xs, Xt,
     def cost(alpha, A, kernel='linear'):
         return np.mean(np.log(A @ alpha))
 
-    def phi(X, support_vectors, sigma, kernel='linear'):
+    def phi(X, basis_vectors,  kernel='linear', kernel_param=None):
         if kernel == 'linear':
-            return np.dot(X, support_vectors.T)
+            return np.dot(X, basis_vectors.T)
         elif kernel == 'rbf':
-            return np.exp(- cdist(X, support_vectors) / (2 * (sigma ** 2)))
+            D = cdist(X, basis_vectors)
+            if kernel_param is None:
+                kernel_param = [1 / np.median(D)]
+            return np.exp(- kernel_param[0] * D)
+        elif kernel == 'tanh':
+            if kernel_param is None:
+                kernel_param = [1.0, 0.0]
+            return np.tanh(kernel_param[0] * np.dot(X, basis_vectors.T) + kernel_param[1])
         else:
             raise ValueError('Bad kernel')
 
     
     nt = Xt.shape[0]
+    if basis_vectors is None:
+        ind = np.arange(nt)
+        n_basis = np.maximum(100, int(0.5 * nt))
+        basis_vectors = Xt[np.random.choice(ind, size=n_basis), :]
+    else:
+        n_basis = len(basis_vectors)
     
-    if support_vectors is None:
-        randind = np.random.choice(np.arange(nt), size=int(Xt.shape[0] * percentSamples))
-        support_vectors = Xt[randind, :]
-    
-    A = phi(Xt, support_vectors, sigma=sigma, kernel=kernel)
-    b = np.mean(phi(Xs, support_vectors, sigma=sigma, kernel=kernel), axis=0)
+    A = phi(Xt, basis_vectors, kernel_param=kernel_param, kernel=kernel)
+    b = np.mean(phi(Xs, basis_vectors, kernel_param=kernel_param, kernel=kernel), axis=0)
 
     alpha = np.ones(b.shape) / b.shape[0]
     costs = []
@@ -73,5 +82,5 @@ def KLIEP(Xs, Xt,
         if len(costs) > 0.0 and c < np.max(costs):
             break
         costs.append(c)
-    weights = np.dot(alpha, phi(Xs, support_vectors, sigma=sigma, kernel=kernel))
+    weights = np.dot(phi(Xs, basis_vectors, kernel_param=kernel_param, kernel=kernel), alpha)
     return weights

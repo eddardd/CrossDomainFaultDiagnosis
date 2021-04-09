@@ -81,12 +81,12 @@ class CSTR(AbstractSystem):
         observations = []
         actions = []
         for ti in t:
-            if self.fault_type == 10:
-                self.Ci = np.maximum(0, 0.005 * np.random.randn())
-            elif self.fault_type == 11:
-                self.Ti = 5 * np.random.randn()
-            elif self.fault_type == 12:
-                self.Tci = 5 * np.random.randn()
+            if self.fault_type == 10 and ti % 60 == 0:
+                self.Ci += 0.005 * np.random.randn()
+            elif self.fault_type == 11 and ti % 60 == 0:
+                self.Ti += 5 * np.random.randn()
+            elif self.fault_type == 12 and ti % 60 == 0:
+                self.Tci += 5 * np.random.randn()
             state = np.array(X[-1])
             action = u_fn(ti, self.observe(ti, state))
             # Note: observation vector for the CSTR system is quite different from

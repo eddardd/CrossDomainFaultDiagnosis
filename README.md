@@ -38,6 +38,26 @@ Optimal Transport-based transfer
 * [x] Monge Transport [10] - already implemented in the [Python Optimal Transprot](https://github.com/PythonOT/POT) library
 * [x] Joint Distribution Optimal Transport (JDOT) [11] - implementation adapted from [rflamary Github repository](https://github.com/rflamary/JDOT)
 
+## Abstract
+
+Automatic fault diagnosis systems are an important component for fault tolerance in modern control loops. Nonetheless, the training of such diagnosis systems can be costly or even dangerous since faulty data need to be collected by driving the process to dangerous conditions. A possible solution to the said problem is training an automatic diagnosis system solely on simulation data. However, due to modeling errors, the data acquired may not reflect real process data. This is characterized by a change in the probability distributions upon which data is sampled. This problem is known in the literature as domain adaptation or cross-domain fault diagnosis in our context. Thus this work analyzes the cross-domain diagnosis problem through the point of view of optimal transport. We apply our methodology in a case study concerning the continuous stirred tank reactor (CSTR) system. Our contributions are three-fold: 1. we perform a comparative study concerning feature extraction and domain adaptation algorithms, 2. we analyze the relation between wrongful model specification and the distance between source and target distributions, and its impact on classification performance 3. we analyze the impact of modeling errors in the quality of optimal transport plans, and the influence of this latter factor into classification performance.
+
+In summary, we found that optimal transport-based domain adaptation is the best choice for solving the distributional shift problem. In addition, we further verified that an increasing degree of modeling error is correlated with an increase in the distance between source and target distributions. Furthermore, we found experimentally that the latter distance is correlated with a decrease in classification performance, confirming previous theoretical findings. Finally, the degree of modeling error can cause the transportation plan between source and target domain to transfer mass between different classes, harming classification performance.
+
+## Citation
+
+If you find this useful for your work/research, please consider citing this thesis:
+
+```
+@thesis{montesuma2021,
+    author       = {Eduardo Fernandes Montesuma}, 
+    title        = {Cross-Domain Fault Diagnosis through Optimal Transport},
+    school       = {Universidade Federal do Ceará},
+    year         = 2021,
+    type         = {Bachelor's Thesis}
+}  
+```
+
 ## Results
 
 ### Comparative Study
@@ -384,19 +404,6 @@ Optimal Transport-based transfer
 </tbody>
 </table>
 
-## Citation
-
-If you find this useful for your work/research, please consider citing this thesis:
-
-```
-@thesis{montesuma2021,
-    author       = {Eduardo Fernandes Montesuma}, 
-    title        = {Cross-Domain Fault Diagnosis through Optimal Transport},
-    school       = {Universidade Federal do Ceará},
-    year         = 2021,
-    type         = {Bachelor's Thesis}
-}  
-```
 
 References
 ----------

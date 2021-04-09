@@ -4,17 +4,12 @@ import numpy as np
 from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
 
-
-def hinge_loss(Y, F):
-    res = np.zeros((Y.shape[0],F.shape[0]))
-    for i in range(Y.shape[1]):
-        res += np.maximum(0, 1-Y[:,i].reshape((Y.shape[0],1))*F[:,i].reshape((1,F.shape[0])))**2
-    return res
+from domain_adaptation.metrics import HingeLoss
 
 
 def fit_jdot(Xs, Xt, ys, yt=None,
              clf=LinearSVC,
-             loss=hinge_loss,
+             loss=HingeLoss(),
              alpha=.1,
              reg=1,
              method='emd',
@@ -33,7 +28,7 @@ def fit_jdot(Xs, Xt, ys, yt=None,
     b = ot.unif(nt)
 
     C0 = ot.dist(Xs, Xt, metric=metric)
-    C0 = C0 / np.max(C0)
+    # C0 = C0 / np.max(C0)
     C = alpha * C0.copy()
     log = {'C': [], 'G': [], 'tL': [], 'cL': [], 'Acc': []}
 
@@ -51,12 +46,12 @@ def fit_jdot(Xs, Xt, ys, yt=None,
         Ps = nt * (G.T).dot(Ys)
         
         # Step 3. Fit classifier
-        clf.fit(Xt, (Ps.argmax(axis=1) + 1))
+        clf.fit(Xt, (Ps.argmax(axis=1) + np.min(ys)))
         
         # Step 4. Calculate loss
         Yp = clf.decision_function(Xt)
         yp = Yp.argmax(axis=1) + 1
-        L = loss(Yp, Ps)
+        L = loss(Ys, Yp)
         
         C = alpha * C0.copy() + L
 

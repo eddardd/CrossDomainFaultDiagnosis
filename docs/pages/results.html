@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Bachelor Thesis</title>
+</head>
+
+<body>
+    <!--Navbar-->
+    <div class="navbar">
+        <div class="container flex">
+            <!--<h1 class="logo">Documentation</h1>-->
+            <nav>
+                <ul>
+                    <li><a href="../index.html"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="./docs.html"><i class="fa fa-book"></i> Docs</a></li>
+                    <li><a href="./results.html"><i class="fa fa-flask"></i> Experiments & Results</a></li>
+                    <li><a href="../files/thesis.pdf"><i class="fa fa-file-pdf"></i> Thesis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <h1>Experiments Description</h1>
+
+    <h1>Results</h1>
+
+    <h2>Results on the Two-Tanks system</h2>
+    <h3>Raw Signals</h3>
+
+    <table>
+        <tr>
+          <th>&emsp;Algorithm&emsp;</th>
+          <th>&emsp;\(\epsilon=0.1\)&emsp;</th>
+          <th>&emsp;\(\epsilon=0.2\)&emsp;</th>
+          <th>&emsp;\(\epsilon=0.3\)&emsp;</th>
+          <th>&emsp;\(\epsilon=0.4\)&emsp;</th>
+          <th>&emsp;\(\epsilon=0.5\)&emsp;</th>
+          <th>&emsp;\(\epsilon=0.6\)&emsp;</th>
+          <th>&emsp;\(\epsilon=0.7\)&emsp;</th>
+          <th>&emsp;\(\epsilon=0.8\)&emsp;</th>
+          <th>&emsp;\(\epsilon=0.9\)&emsp;</th>
+        </tr>
+        <td>Baseline</td>
+        <td style='text-align: center;'>92.5%</td>
+        <td style='text-align: center;'>76.0%</td>
+        <td style='text-align: center;'>79.0%</td>
+        <td style='text-align: center;'>70.0%</td>
+        <td style='text-align: center;'>68.5%</td>
+        <td style='text-align: center;'>59.0%</td>
+        <td style='text-align: center;'>55.5%</td>
+        <td style='text-align: center;'>56.5%</td>
+        <td style='text-align: center;'>51.5%</td>
+        <tr>
+          <td>PCA</td>
+          <td style='text-align: center;'>60.0%</td>
+          <td style='text-align: center;'>60.0%</td>
+          <td style='text-align: center;'>60.0%</td>
+          <td style='text-align: center;'>62.5%</td>
+          <td style='text-align: center;'>65.5%</td>
+          <td style='text-align: center;'>60.5%</td>
+          <td style='text-align: center;'>0.0%</td>
+          <td style='text-align: center;'>0.0%</td>
+          <td style='text-align: center;'>0.0%</td>
+        </tr>
+        <tr>
+            <td>PCA (S + T)</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>99.0%</td>
+            <td style='text-align: center;'>80.0%</td>
+            <td style='text-align: center;'>80.0%</td>
+            <td style='text-align: center;'>80.0%</td>
+            <td style='text-align: center;'>80.0%</td>
+            <td style='text-align: center;'>80.0%</td>
+            <td style='text-align: center;'>80.0%</td>
+            <td style='text-align: center;'>61.0%</td>
+        </tr>
+        <tr>
+          <td>TCA</td>
+          <td style='text-align: center;'>100.0%</td>
+          <td style='text-align: center;'>100.0%</td>
+          <td style='text-align: center;'>100.0%</td>
+          <td style='text-align: center;'>80.0%</td>
+          <td style='text-align: center;'>80.0%</td>
+          <td style='text-align: center;'>80.0%</td>
+          <td style='text-align: center;'>80.0%</td>
+          <td style='text-align: center;'>60.0%</td>
+          <td style='text-align: center;'>60.0%</td>
+        </tr>
+        <tr>
+            <td>GFK(PCA, PCA)</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>99.5%</td>
+        </tr>
+        <tr>
+            <td>GFK(PLS, PCA)</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>99.5%</td>
+        </tr>
+        </tr>
+        <tr>
+            <td>CNN</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>100.0%</td>
+            <td style='text-align: center;'>95.0%</td>
+            <td style='text-align: center;'>80.0%</td>
+            <td style='text-align: center;'>80.0%</td>
+            <td style='text-align: center;'>66.5%</td>
+            <td style='text-align: center;'>60.0%</td>
+            <td style='text-align: center;'>60.0%</td>
+            <td style='text-align: center;'>60.0%</td>
+        </tr>
+        <tr>
+            <td>DANN</td>
+            <td style='text-align: center;'>99.9%</td>
+            <td style='text-align: center;'>99.9%</td>
+            <td style='text-align: center;'>99.9%</td>
+            <td style='text-align: center;'>99.9%</td>
+            <td style='text-align: center;'>83.9%</td>
+            <td style='text-align: center;'>67.8%</td>
+            <td style='text-align: center;'>81.5%</td>
+            <td style='text-align: center;'>81.0%</td>
+            <td style='text-align: center;'>65.1%</td>
+        </tr>
+        <tr>
+            <td>KMM</td>
+            <td style='text-align: center;'>92.5%</td>
+            <td style='text-align: center;'>76.5%</td>
+            <td style='text-align: center;'>79.5%</td>
+            <td style='text-align: center;'>70.5%</td>
+            <td style='text-align: center;'>69.5%</td>
+            <td style='text-align: center;'>60.0%</td>
+            <td style='text-align: center;'>58.0%</td>
+            <td style='text-align: center;'>56.5%</td>
+            <td style='text-align: center;'>51.5%</td>
+        </tr>
+        <tr>
+            <td>KLIEP</td>
+            <td style='text-align: center;'>92.5%</td>
+            <td style='text-align: center;'>76.5%</td>
+            <td style='text-align: center;'>79.5%</td>
+            <td style='text-align: center;'>70.5%</td>
+            <td style='text-align: center;'>70.0%</td>
+            <td style='text-align: center;'>60.0%</td>
+            <td style='text-align: center;'>58.0%</td>
+            <td style='text-align: center;'>57.0%</td>
+            <td style='text-align: center;'>51.5%</td>
+        </tr>
+        <tr>
+            <td>LSIF</td>
+            <td style='text-align: center;'>92.5%</td>
+            <td style='text-align: center;'>76.5%</td>
+            <td style='text-align: center;'>79.5%</td>
+            <td style='text-align: center;'>70.5%</td>
+            <td style='text-align: center;'>70.0%</td>
+            <td style='text-align: center;'>60.0%</td>
+            <td style='text-align: center;'>58.0%</td>
+            <td style='text-align: center;'>57.0%</td>
+            <td style='text-align: center;'>51.5%</td>
+        </tr>
+        <tr>
+            <td>OTDA - EMD</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+        </tr>
+        <tr>
+            <td>OTDA - Sinkhorn</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+        </tr>
+        <tr>
+            <td>OTDA - Sinkhorn l1l2</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+        </tr>
+        <tr>
+            <td>OTDA - MP Linear</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+        </tr>
+        <tr>
+            <td>OTDA - MP Gaussian</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>105%</td>
+        </tr>
+        <tr>
+            <td>JDOT</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+            <td style='text-align: center;'>100%</td>
+        </tr>
+      </table>
+
+    <h3>Autocorrelation Features</h3>
+
+    <h2>Results on the CSTR</h2>
+    <h3>Raw Signals</h3>
+
+    <table>
+        <thead>
+          <tr>
+            <th rowspan="2">Algorithm</th>
+            <th>N=1</th>
+            <th>N=1</th>
+            <th>N=1</th>
+            <th>N=1</th>
+            <th>N=0.5</th>
+            <th>N=1.5</th>
+            <th>N=2</th>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>&emsp;\(\epsilon=0.0\)&emsp;<br></td>
+            <td style='text-align: center;'>&emsp;\(\epsilon=0.1\)&emsp;<br></td>
+            <td style='text-align: center;'>&emsp;\(\epsilon=0.15\)&emsp;<br></td>
+            <td style='text-align: center;'>&emsp;\(\epsilon=0.2\)&emsp;<br></td>
+            <td style='text-align: center;'>&emsp;\(\epsilon=0.15\)&emsp;<br></td>
+            <td style='text-align: center;'>&emsp;\(\epsilon=0.15\)&emsp;<br></td>
+            <td style='text-align: center;'>&emsp;\(\epsilon=0.15\)&emsp;<br></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style='text-align: center;'>Baseline</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>PCA</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>PCA S + T</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>TCA</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>GFK (PCA, PCA)</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>GFK (PLS, PCA)</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>CNN</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>DANN</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>KMM</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>KLIEP</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>LSIF</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>OTDA - EMD</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>OTDA - Sinkhorn</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>OTDA - Sinkhornl1l2</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>OTDA - MP Linear</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>OTDA - MP Gaussian</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+          <tr>
+            <td style='text-align: center;'>JDOT</td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+            <td style='text-align: center;'></td>
+          </tr>
+        </tbody>
+        </table>
+    
+    <h3>Autocorrelation Features</h3>
+
+    <hr class="soften">
+
+    <h1>Discussion</h1>
+    <h2>Feature Choice vs. Transfer-Learning method Choice</h2>
+    <h2>Distribution Shift vs. Classifier performance</h2>
+</body>

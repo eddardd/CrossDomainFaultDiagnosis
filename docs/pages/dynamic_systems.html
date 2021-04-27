@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!--Things we don't see in the document-->
+    <!--Metatag: tag that has some information in it-->
+    <title>Dynamic Systems Module</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container flex">
+            <!--<h1 class="logo">Documentation</h1>-->
+            <nav>
+                <ul>
+                    <li><a href="../index.html"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="./docs.html"><i class="fa fa-book"></i> Docs</a></li>
+                    <li><a href="./results.html"><i class="fa fa-flask"></i> Experiments & Results</a></li>
+                    <li><a href="../files/thesis.pdf"><i class="fa fa-file-pdf"></i> Thesis</a></li>
+                </ul>
+
+            </nav>
+
+        </div>
+    </div>
+
+    <h1>Dynamic Systems module</h1>
+
+    <div class="container">
+        <p class="text-block">
+            This module is composed by classes and functions related to dynamic systems simulation.
+            it is composed of two sub-modules,
+    
+            <ul class="shifted-list">
+                <li>
+                    The simulation module, concerned with the implementation of simulators for dynamic
+                    systems
+                </li>
+                <li>
+                    The controller module, concerned with the implementation of process controllers.
+                </li>
+            </ul>
+
+            These two modules are documented below.
+        </p>
+
+        <hr class="soften">
+    </div>
+
+    <br>
+
+    <h2 id="simulation">simulation module</h2>
+    <h3 id="two-tanks">Two Tanks System</h3>
+    <h4 id="mathematical-description">Mathematical Description</h4>
+
+    <h4>Code</h4>
+
+    <div class="container">
+        <pre>
+            <code>
+class TwoTanks(A1=1,
+               A2=1,
+               a12=0.1,
+               a13=0.1,
+               a23=0.1,
+               h1_max=1.5,
+               h2_max=1.5,
+               fault_type=0,
+               measurement_noise=0.0,
+               process_noise=0.0)
+            </code>
+        </pre>
+
+        <h4 style="text-align: left;">Parameters</h4>
+
+        <b>A1</b> : float<br>
+        <p class="description"></p>
+        &emsp;Area of Tank \(T_{1}\), in \(m^2\)
+        </p>
+        <b>A2</b> : float<br>
+        <p class="description"></p>
+        &emsp;Area of Tank \(T_{2}\), in \(m^2\)
+        </p>
+        <b>a12</b> : float<br>
+        <p class="description"></p>
+        &emsp;Area of the connecting tube between tanks \(T_{1}\) and \(T_{2}\)
+        </p>
+        <b>a13</b> : float<br>
+        <p class="description"></p>
+        &emsp;Area of the connecting tube between tank \(T_{1}\) and the environment
+        </p>
+        <b>a23</b> : float<br>
+        <p class="description"></p>
+        &emsp;Area of the connecting tube between tank \(T_{2}\) and the environment
+        </p>
+        <b>h1_max</b> : float<br>
+        <p class="description"></p>
+        &emsp;Maximum water height for tank \(T_{1}\)
+        </p>
+        <b>h2_max</b> : float<br>
+        <p class="description"></p>
+        &emsp;Maximum water height for tank \(T_{2}\)
+        </p>
+        <b>fault_type</b> : int<br>
+        <p class="description"></p>
+        &emsp;Type of fault for simulation. Each integer between 0 and 4 corresponds to a different fault,
+        <ul style="list-style: square; list-style-position: inside; margin-left: 30px;">
+            <li>fault_type = 0: Normal Operation</li>
+            <li>fault_type = 1: Sensor Bias, \(y(t) = x(t) + \delta t\)</li>
+            <li>fault_type = 2: Connecting area a13 decay, \(a_{13}(t) = a_{13}exp(-\delta t)\)</li>
+            <li>fault_type = 3: Connecting area a23 decay, \(a_{23}(t) = a_{23}exp(-\delta t)\)</li>
+            <li>fault_type = 4: Connecting area a12 decay, \(a_{12}(t) = a_{12}exp(-\delta t)\)</li>
+        </ul>
+        </p>
+        <b>measurement_noise</b>: float<br>
+        <p class="description"></p>
+        &emsp;Standart deviation \(\sigma\) of gaussian noise added to measurements, \(y(t) = x(t) + \epsilon\), where \(\epsilon \sim \mathcal{N}(0, \sigma^2)\)
+        </p>
+        <b>process_noise</b>: float<br>
+        <p class="description"></p>
+        &emsp;Standart deviation \(\sigma\) of gaussian noise added to the system dynamics, \(\dot{x}(t) = f(t, x(t), u(t)) + \epsilon\), where \(\epsilon \sim \mathcal{N}(0, \sigma^2)\)
+        </p>
+
+        <h4>Usage</h4>
+
+        <pre>
+            <code>
+# Example: Two Tanks step response
+import numpy as np
+from dynamic_systems.simulation import TwoTanks
+
+
+def step_fn(t, observation):
+    if t >= 0:
+        return 1
+    else:
+        return 0
+
+t0 = 0.0
+tf = 150.0
+dt = 0.2
+t = np.arange(t0, tf, dt)
+two_tanks = TwoTanks(fault_type=0, measurement_noise=0.0, process_noise=0.0)
+# You can use __call__ to start the simulation. The Two Tanks class will return
+# 3 arrays: u, containing the input at each time-step, x, containing the state
+# variables and y, containing the measurements.
+u, x, y = two_tanks(t, [0.0, 0.0], u_fn)
+            </code>
+        </pre>
+
+    </div>
+    
+</body>

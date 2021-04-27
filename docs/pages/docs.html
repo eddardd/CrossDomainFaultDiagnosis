@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
-    <!--Things we don't see in the document-->
-    <!--Metatag: tag that has some information in it-->
-    <title>Dynamic Systems Module</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Bachelor Thesis</title>
 </head>
 
 <body>
@@ -24,50 +18,38 @@
                 <ul>
                     <li><a href="../index.html"><i class="fa fa-home"></i> Home</a></li>
                     <li><a href="./docs.html"><i class="fa fa-book"></i> Docs</a></li>
-                    <li><a href="./results.html"><i class="fa fa-flask"></i> Experiments & Results</a></li>
-                    <li><a href="../files/thesis.pdf"><i class="fa fa-file-pdf"></i> Thesis</a></li>
+                    <li><a href="./results.html"><i class="fa fa-flask"></i> Results</a></li>
+                    <li><a href="https://github.com/eddardd/CrossDomainFaultDiagnosis/blob/main/docs/files/thesis.pdf"><i class="fa fa-file-pdf"></i> Thesis</a></li>
+                    <li><a href="https://github.com/eddardd/CrossDomainFaultDiagnosis/"><i class="fab fa-github"></i> Repository</a></li>
                 </ul>
-
             </nav>
-
         </div>
     </div>
 
-    <h1>Code Documentation</h1>
+<div class="container">
+<h1>Code Documentation</h1>
+<h2>API Reference</h2>
+<ul class="shifted-list">
+    <li>Dynamic Systems module</li>
+    <ul class="shifted-list">
+        <li>controller module</li>
+        <li>indentification module</li>
+        <li>simulation module</li>
+    </ul>
+    <li>Domain Adaptation module</li>
+    <ul class="shifted-list">
+        <li>feature_based module</li>
+        <li>instance_based module</li>
+        <li>ot_based module</li>
+        <li>classification</li>
+        <li>statistical divergences</li>
+        <li>metrics</li>
+    </ul>
+</ul>
+</div>
 
-    <h2>API Reference</h2>
-    <div class="container">
-        <ul class="shifted-list">
-            <li><a href="./dynamic_systems.html">Dynamic Systems</a>
-                <ul style="margin-left: 35px;">
-                    <li><a href="./dynamic_systems.html#simulation">simulation module</a>
-                        <ul style="margin-left:35px;">
-                            <li><a href="#TwoTanks">Two Tanks System</a></li>
-                            <li><a href="#CSTR">CSTR System</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#controller">controller module</a>
-                        <ul style="margin-left:35px;">
-                            <li><a href="#pid">PID Controller</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>Domain Adaptation
-                <ul style="margin-left: 35px;">
-                    <li><a href="#instance-based">instance-based module</a></li>
-                    <li><a href="#feature-based">feature-based module</a></li>
-                    <li><a href="#ot-based">ot module</a></li>
-                </ul>
-            </li>
-            <li>Feature Extraction
-                <ul style="margin-left: 35px;">
-                    <li><a href="#acf">Feature Extraction module</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
 </body>
+
+
 
 </html>

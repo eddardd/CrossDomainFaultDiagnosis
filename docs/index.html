@@ -18,8 +18,9 @@
                 <ul>
                     <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
                     <li><a href="./pages/docs.html"><i class="fa fa-book"></i> Docs</a></li>
-                    <li><a href="./pages/results.html"><i class="fa fa-flask"></i> Experiments & Results</a></li>
+                    <li><a href="./pages/results.html"><i class="fa fa-flask"></i> Results</a></li>
                     <li><a href="https://github.com/eddardd/CrossDomainFaultDiagnosis/blob/main/docs/files/thesis.pdf"><i class="fa fa-file-pdf"></i> Thesis</a></li>
+                    <li><a href="https://github.com/eddardd/CrossDomainFaultDiagnosis/"><i class="fab fa-github"></i> Repository</a></li>
                 </ul>
             </nav>
         </div>
@@ -35,11 +36,17 @@
         is training an automatic diagnosis system solely on simulation data. However, due to modeling errors, the data acquired may not reflect real process data.
         This is characterized by a change in the probability distributions upon which data is sampled. This problem is known in the literature as domain adaptation or
         cross-domain fault diagnosis in our context. Thus this work analyzes the cross-domain diagnosis problem through the point of view of optimal transport. We apply
-        our methodology in a case study concerning the continuous stirred tank reactor (CSTR) system. Our contributions are three-fold: 1. we perform a comparative study
-        concerning feature extraction and domain adaptation algorithms, 2. we analyze the relation between wrongful model specification and the distance between source
-        and target distributions, and its impact on classification performance 3. we analyze the impact of modeling errors in the quality of optimal transport plans,
-        and the influence of this latter factor into classification performance.
-        <br>
+        our methodology in a case study concerning the continuous stirred tank reactor (CSTR) system. Our contributions are three-fold:
+    </p>
+    <ul class="shifted-list">
+        <li>1. we perform a comparative study concerning feature extraction and domain adaptation algorithms </li>
+        <li>2. we analyze the relation between wrongful model specification and the distance between source and target distributions,
+            and its impact on classification performance
+        </li>
+        <li>3. we analyze the impact of modeling errors in the quality of optimal transport plans,
+            and the influence of this latter factor into classification performance.</li>
+    </ul>
+    <p class="text-block">
         In summary, we found that optimal transport-based domain adaptation is the best choice for solving the distributional shift problem. In addition, we further
         verified that an increasing degree of modeling error is correlated with an increase in the distance between source and target distributions. Furthermore,
         we found experimentally that the latter distance is correlated with a decrease in classification performance, confirming previous theoretical findings.
@@ -50,17 +57,27 @@
     <br>
     <h2>Overview</h2>
 
+    <img src="./files/Methodology.png" alt="Methodology overview">
+
     <p class="text-block">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales cursus dui, quis dapibus sem varius pharetra.
-        Nulla consectetur enim eget sagittis euismod. Integer vulputate ligula mauris, at aliquet arcu tempus non. Sed dictum felis quis finibus convallis.
-        Nam pretium a dolor id convallis. Maecenas congue ante nec maximus dignissim. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-        per inceptos himenaeos. Vivamus vulputate nulla magna, quis sodales ante faucibus at. Donec vulputate nunc turpis, id lacinia est rutrum sed. Quisque
-        risus enim, auctor at pharetra vel, congue in velit. Nunc ultricies finibus sem nec fermentum.
+        We use the pipeline above for performing <b>cross-domain fault diagnosis</b>, which corresponds to <b>unsupervised domain adaptation</b> when data corresponds
+        to the detection of faults in <b>dynamical systems</b>. The pipeline is composed by the following blocks,
     </p>
+    <ul class='shifted-list'>
+        <li><b>Process:</b> the real process (in our case, a chemical plant). It generates real data, in opposition to simulation data.</li>
+        <li><b>Modeling/Simulation:</b> corresponds to a mathematical model used to simulate the real process. It generates simulation data. Note that
+            the acquisition of simulation data incurs none to very small cost.</li>
+        <li><b>Supervisor:</b> it may be a human, or any a priori knowledge (e.g. knowing that the system is simulated for a specific fault) that gives us
+            the ground-truth label of the sample.</li>
+        <li><b>Feature Extraction:</b> it corresponds to the act of extracting meaningful features from the generated signals. In our experiments we use 
+            raw signals themselves (without any feature extraction), autocorrelation features and convolutional neural network latent space features.</li>
+        <li><b>Fautl Classification:</b> this block classifies the features into one of the possible sets of faults. Indeed, it performs the fault diagnosis.</li>
+    </ul>
 
     <hr class="soften">
     <br>
     <h2>Reference</h2>
+    <p>If you find our work useful in your research, please consider citing it.</p>
     <div class="doc-box">
         <pre>
             <code>

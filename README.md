@@ -49,7 +49,7 @@ In summary, we found that optimal transport-based domain adaptation is the best 
 If you find this useful for your work/research, please consider citing this thesis:
 
 ```
-@thesis{montesuma2021,
+@phdthesis{montesuma2021,
     author       = {Eduardo Fernandes Montesuma}, 
     title        = {Cross-Domain Fault Diagnosis through Optimal Transport},
     school       = {Universidade Federal do Ceará},

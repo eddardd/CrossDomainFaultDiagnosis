@@ -44,9 +44,9 @@ Automatic fault diagnosis systems are an important component for fault tolerance
 
 In summary, we found that optimal transport-based domain adaptation is the best choice for solving the distributional shift problem. In addition, we further verified that an increasing degree of modeling error is correlated with an increase in the distance between source and target distributions. Furthermore, we found experimentally that the latter distance is correlated with a decrease in classification performance, confirming previous theoretical findings. Finally, the degree of modeling error can cause the transportation plan between source and target domain to transfer mass between different classes, harming classification performance.
 
-## Citation
+## Associated Publications
 
-If you find this useful for your work/research, please consider citing this thesis:
+This repository is associated with the following Bachelor Thesis,
 
 ```
 @phdthesis{montesuma2021,
@@ -58,6 +58,22 @@ If you find this useful for your work/research, please consider citing this thes
 }  
 ```
 
+This thesis was summarized in the following conference paper,
+
+```
+@article{montesuma2022cross,
+  title={Cross-domain fault diagnosis through optimal transport for a CSTR process},
+  author={Montesuma, Eduardo Fernandes and Mulas, Michela and Corona, Francesco and Mboula, Fred-Maurice Ngole},
+  journal={IFAC-PapersOnLine},
+  volume={55},
+  number={7},
+  pages={946--951},
+  year={2022},
+  publisher={Elsevier}
+}
+```
+
+If you find your code useful in your research, please consider citing these papers.
 
 References
 ----------
